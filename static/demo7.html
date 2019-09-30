@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../js/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<p>计数器：{{count}}</p>
+			<button @click="count++" v-html="'++'"></button>
+			<input type="text" v-model="km" />
+			<br />
+			<input type="text" v-model="m" />
+			<br />
+			<p>v-bind是单向的vue-->html</p>
+			<p>v-model是双向的</p>
+			<input type="text" v-bind:value="count" />
+		</div>
+	</body>
+	<script>
+		var vm = new Vue({
+			el: '#app',
+			data:{
+				count: 1,
+				km: 0,
+				m: 0
+			},
+			watch:{
+				km: function(value){
+					this.m = this.km*1000;
+				},
+				m: function(value){
+					this.km = this.m/1000;
+				}
+			}
+		});
+		vm.$watch('count',function(newC,oldC){
+			alert(oldC+"--\>"+newC);
+		});
+	</script>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../js/vue.js"></script>
+	</head>
+	<body>
+		<div id='app'>
+			<input id="liyan" name="checkBoxs" type="checkbox" v-model="names" value="liyan"/>
+			<label for="liyan">liyan</label>
+			<input id="meiling" name="checkBoxs" type="checkbox" v-model="names" value="meiling"/>
+			<label for="meiling">meiling</label>
+			<input id="nooneder" name="checkBoxs" type="checkbox" v-model="names" value="nooneder"/>
+			<label for="nooneder">nooneder</label>
+			<br />
+			<p v-html="names"></p>
+			<select v-model="option">
+				<option value="liyan">liyan</option>
+				<option value="meiling">meiling</option>
+			</select>
+			<br />
+			<p>selected:{{option}}</p>
+			
+			<input id='radioliyan' type="radio" v-model="radio" value="liyan"/>
+			<label for="radioliyan">liyan</label>
+			<input id="radiomeiling" type="radio" v-model="radio" value="meiling"/>
+			<label for="radiomeiling">meiling</label>
+			<br />
+			<p>selected:{{radio}}</p>
+			<input type="text" v-model.trim="text"  />
+			<br />
+			<p>*{{text}}*</p>
+		</div>
+		<script>
+			new Vue({
+				el: '#app',
+				data:{
+					names: [],
+					option: '     ',
+					radio: null,
+					text: null
+				}
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>v-model&v-bind diff</title>
+		<script src="../js/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<input type="text" :value="vbindMessage"/>
+			<br>
+			<p>vbind:{{vbindMessage}}</p>
+
+			<input type="text" v-model="vmodelMessage"/>
+			<br>
+			<p>vmodel:{{vmodelMessage}}</p>
+			<br>
+			<p v-show="show">none you ,none not you.<br></p>
+			isshow<button @click="reverse">{{show}}</button>
+			
+			
+			<ul v-for="people in peoples">
+				<li v-html="people.name+'\t'+people.age"></li>
+			</ul>
+			
+			<p v-for="value in peoples[2]" v-html="value">
+				
+			</p>
+			
+			<p v-for="(value,key) in peoples[2]" v-html="key+'\t'+value">
+				
+			</p>
+			<!-- 第二个一定是key跟参数名没关系 -->
+			<p v-for="(key,value) in peoples[2]" v-html="key+'\t'+value">
+				
+			</p>
+			
+			<p v-for="(value,key,index) in peoples[2]" v-html="index+'\t'+key+'\t'+value">
+				
+			</p>
+			
+			
+			<p v-for="i in 3000" v-html="'i love you'"/>
+			<p v-html="peoples[1]"></p>
+		</div>
+		<script>
+			new Vue({
+				el: '#app',
+				data:{
+					vbindMessage: 'vbindMessage',
+					vmodelMessage: 'vmodelMessage',
+					show: false,
+					peoples: [
+						{name:'nooneder',age:22},
+						{name:'liyan',age:20},
+						{name:'meiling',age:18}
+					]
+				},
+				methods:{
+					reverse: function(){
+						this.show = !this.show;
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

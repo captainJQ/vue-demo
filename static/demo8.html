@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../js/vue.js"></script>
+		<style>
+		.base {
+		  width: 100px;
+		  height: 100px;
+		}
+		
+		.active {
+		  background: green;
+		}
+		
+		.text-danger {
+		  background: red;
+		}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<div v-bind:class="objClass"></div>
+			<div v-bind:style="{width: div2.width,height: div2.height,color: div2.color,background: div2.background}"> &nbsp;&nbsp; i love you</div>
+			<div v-bind:style="div2"></div>
+		</div>
+		<script>
+			new Vue({
+				el: '#app',
+				data: {
+					isActive: true,
+					error: {
+						value: false,
+						type: 'fatal'
+					},
+					div2: {
+						width: '100px',
+						height: '100px',
+						color: 'cyan',
+						background: 'pink'
+					}
+				},
+				computed: {
+					objClass: function(){
+						return {
+							'base': true,
+							'active': this.isActive && !this.error.value,
+							'text-danger' : this.error.value && this.error.type==='fatal',
+						};
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

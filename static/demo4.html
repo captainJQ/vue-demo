@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../js/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+		<!-- <button v-on:click="reverse" >reverse</button> -->
+		<button @click="reverse" >reverse</button>
+		<p v-html="message"></p>
+		<p>{{message|upCase}}</p>
+		</div>
+		<script>
+			new Vue({
+				el: '#app',
+				data: {
+					message: 'nooneder'
+				},
+				methods: {
+					reverse: function(){
+						this.message = this.message.split('').reverse().join('')
+					},
+					upCase: function(value){
+						if(!value)
+							return '';
+						value = value.toString();
+						return value.charAt(0).toUpperCase()+value.slice(1);
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

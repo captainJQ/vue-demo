@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<style>
+			.class1{
+				background: #444;
+				color: #eee;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<label for="r1"> change color</label>
+			<input type="checkbox" v-model="use" id="r1" />
+			check: {{use}}
+			<br />
+			<br />
+			<!-- <div v-bind:class="{'class1': use}"> -->
+			<div :class="{'class1': use}">
+				v-bind:class 指令
+			</div>
+			<p v-if="noone">noone</p>
+			<h1 v-if="luck">luck</h1>
+			<a v-bind:href="url">nooneder</a>
+			<br />
+			<input type="text" v-model="message" />
+			<br />
+			<p v-html="message"><!-- {{message}} --></p>
+		</div>
+		<script>
+			new Vue({
+				el: '#app',
+				data: {
+					use: false,
+					noone: true,
+					luck: true,
+					url: 'http://www.nooneder.com',
+					message: 'nooneder'
+				}
+			});
+		</script>
+	</body>
+</html>

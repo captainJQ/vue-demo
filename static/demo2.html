@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+		
+	</head>
+	<body>
+		<div id="vue_det">
+			<h1>site : {{site}}</h1>
+			<h1><a href="http://www.nooneder.com">{{url}}</a> </h1>
+			<h1>alexa : {{alexa}}</h1>
+		</div>
+		<script>
+			var data ={
+				site : "无一",
+				url : "www.nooneder.com",
+				alexa : "10000"
+			}
+			var vm = new Vue({
+				el: "#vue_det",
+				data: data
+			})
+			document.write(vm.site===data.site)
+			document.write("<br>")
+			vm.site = "nooneder"
+			document.writeln(data.site)
+			data.alexa = "1234"
+			document.write(vm.alexa)
+			document.writeln("")
+			document.writeln(vm.$data===data)
+			document.writeln(vm.$el === document.getElementById("vue_det"))
+		</script>
+	</body>
+</html>

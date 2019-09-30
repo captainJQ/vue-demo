@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>computed</title>
+		<script src="../js/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<input type="text" v-model="messsage"/>
+			<br>
+			<p v-html="reversedMessage"></p>
+			
+			<p v-html="site"></p>
+		</div>
+		<script>
+			var vm = new Vue({
+				el: '#app',
+				data:{
+					messsage: 'nooneder',
+					name : 'google',
+					url: 'www.google.com'
+				},
+				computed:{
+					reversedMessage: function(){
+						return this.messsage.split('').reverse().join('');
+					},
+					site:{
+						get: function(){
+							return this.name+'\t'+this.url
+						},
+						set: function(value){
+							var fileds = value.split(' ');
+							this.name = fileds[0];
+							this.url = fileds[1]
+						}
+					}
+				}
+			});
+			vm.site = 'nooneder www.nooneder.com';
+			document.write('name:\t'+vm.name);
+			document.write('<br>')
+			document.write('url:\t'+vm.url);
+			document.write('<br>');
+		</script>
+	</body>
+</html>
